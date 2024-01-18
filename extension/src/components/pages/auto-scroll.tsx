@@ -122,6 +122,13 @@ export const AutoScroll = () => {
 
   const [advanced, setAdvanced] = useState(false)
 
+  const start = async () => {
+    console.log("inside extension")
+    chrome.runtime.sendMessage({
+      hello: "world",
+    })
+  }
+
   return (
     <>
       <SpeedSelector speed={speed} onSelect={setSpeed} />
@@ -150,7 +157,10 @@ export const AutoScroll = () => {
       )}
 
       <div className="flex items-center gap-8">
-        <button className="flex items-center justify-center rounded bg-zinc-100 px-8 py-2 text-zinc-900">
+        <button
+          onClick={start}
+          className="flex items-center justify-center rounded bg-zinc-100 px-8 py-2 text-zinc-900"
+        >
           Aplicar
         </button>
 
